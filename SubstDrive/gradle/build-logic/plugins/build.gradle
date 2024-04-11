@@ -1,0 +1,12 @@
+plugins {
+    id 'groovy-gradle-plugin'
+}
+
+gradlePlugin {
+    plugins {
+        create('subst-build-logic') {
+            id = 'acme.build.logic'
+            implementationClass = 'com.acme.plugins.BuildLogic'
+        }
+    }
+}

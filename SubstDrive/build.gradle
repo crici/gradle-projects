@@ -1,0 +1,23 @@
+import com.acme.tasks.MountDrive
+import com.acme.tasks.UnmountDrive
+
+plugins {
+    id 'base'
+    id 'acme.build.logic'
+}
+
+
+def mountDrive = tasks.register('mountDrive', MountDrive) {
+    group = 'Drive Substitution'
+    description = 'Substitute a build sub-folder to a Windows Drive Letter using subst command.'
+
+    driveLetter.set('O')
+    substitutionDirectory.set(layout.buildDirectory.dir('substitution-folder'))
+}
+
+def unmountDrive = tasks.register('unmountDrive', UnmountDrive) {
+    group = 'Drive Substitution'
+    description = 'Delete a drive substitution using subst /d command.'
+
+    driveLetter.set('O')
+}
